@@ -6,23 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 
     <style>
-        .celula{
+        .celula {
             border: solid 1px black;
             text-align: center;
             font-size: 40px;
         }
-        
     </style>
-    
+
 
 </head>
 
 <body>
     <div class="container-fluid">
+        <h2 id="tituloJogador"> Jogador 1, agora é sua vez. </h2>
         <div class="row">
             <div class="col-4 celula">
                 <span onclick="trocarValor(this,0,0)">+</span>
@@ -37,34 +40,34 @@
             </div>
         </div>
 
-            <div class="row">
-                <div class="col-4 celula">
-                    <span onclick="trocarValor(this,1,0)">+</span>
-                </div>
-
-                <div class="col-4 celula">
-                    <span onclick="trocarValor(this,1,1)">+</span>
-                </div>
-
-                <div class="col-4 celula">
-                    <span onclick="trocarValor(this,1,2)">+</span>
-                </div>
+        <div class="row">
+            <div class="col-4 celula">
+                <span onclick="trocarValor(this,1,0)">+</span>
             </div>
 
-            <div class="row">
-                <div class="col-4 celula">
-                    <span onclick="trocarValor(this,2,0)">+</span>
-                </div>
+            <div class="col-4 celula">
+                <span onclick="trocarValor(this,1,1)">+</span>
+            </div>
 
-                <div class="col-4 celula">
-                    <span onclick="trocarValor(this,2,1)">+</span>
-                </div>
-
-                <div class="col-4 celula">
-                    <span onclick="trocarValor(this,2,2)">+</span>
-                </div>
+            <div class="col-4 celula">
+                <span onclick="trocarValor(this,1,2)">+</span>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-4 celula">
+                <span onclick="trocarValor(this,2,0)">+</span>
+            </div>
+
+            <div class="col-4 celula">
+                <span onclick="trocarValor(this,2,1)">+</span>
+            </div>
+
+            <div class="col-4 celula">
+                <span onclick="trocarValor(this,2,2)">+</span>
+            </div>
+        </div>
+    </div>
 
 </body>
 
@@ -79,20 +82,90 @@
 
     console.log(matrizJogo);
 
-    function trocarValor(span, linha, coluna)
-    {
-        if (numeroJogador == 1)
-        {
+    function trocarValor(span, linha, coluna) {
+        0
+        if (numeroJogador == 1) {
             matrizJogo[linha][coluna] = "O";
             span.innerHTML = "O";
             numeroJogador = 2;
+            document.getElementById('tituloJogador').innerHTML = 'Jogador 2, agora é sua vez [X]';
         } else {
             matrizJogo[linha][coluna] = "X";
             span.innerHTML = "X";
             numeroJogador = 1;
+            document.getElementById('tituloJogador').innerHTML = 'Jogador 1, agora é sua vez [O]'
         }
+
         
-        console.log(matrizJogo); 
+
+        //Verificar Ganhador
+        
+        if ((matrizJogo[0][0] == matrizJogo[0][1]) &&
+            (matrizJogo[0][0] == matrizJogo[0][2]) &&
+            (matrizJogo[0][0] != "")
+        ) {
+            alert('O Jogador ' + matrizJogo[0][0] + ' foi o vencedor');
+        }
+        else if
+            ((matrizJogo[1][0] == matrizJogo[1][1]) &&
+            (matrizJogo[1][0] == matrizJogo[1][2]) &&
+            (matrizJogo[1][0] != "")
+        ) {
+            alert('O Jogador ' + matrizJogo[1][0] + ' foi o vencedor');
+        }
+        else if
+            ((matrizJogo[2][0] == matrizJogo[2][1]) &&
+            (matrizJogo[2][0] == matrizJogo[2][2]) &&
+            (matrizJogo[2][0] != "")
+        ) {
+            alert('O Jogador ' + matrizJogo[2][0] + ' foi o vencedor');
+        }
+        else if
+            ((matrizJogo[0][0] == matrizJogo[1][0]) &&
+            (matrizJogo[0][0] == matrizJogo[2][0]) &&
+            (matrizJogo[0][0] != "")
+        ) {
+            alert('O Jogador ' + matrizJogo[0][0] + ' foi o vencedor');
+        }
+        else if
+            ((matrizJogo[0][1] == matrizJogo[1][1]) &&
+            (matrizJogo[0][1] == matrizJogo[2][1]) &&
+            (matrizJogo[0][1] != "")
+        ) {
+            alert('O Jogador ' + matrizJogo[0][1] + ' foi o vencedor');
+        }
+        else if
+            ((matrizJogo[0][2] == matrizJogo[1][2]) &&
+            (matrizJogo[0][2] == matrizJogo[2][2]) &&
+            (matrizJogo[0][2] != "")
+        ) {
+            alert('O Jogador ' + matrizJogo[0][2] + ' foi o vencedor');
+        }
+        else if
+            ((matrizJogo[0][0] == matrizJogo[1][1]) &&
+            (matrizJogo[0][0] == matrizJogo[2][2]) &&
+            (matrizJogo[0][0] != "")
+        ) {
+            alert('O Jogador ' + matrizJogo[0][0] + ' foi o vencedor');
+        }
+        else if
+            ((matrizJogo[0][2 ] == matrizJogo[1][1]) &&
+            (matrizJogo[1][1] == matrizJogo[2][0]) &&
+            (matrizJogo[0][2] != "")
+        ) {
+            alert('O Jogador ' + matrizJogo[0][2] + ' foi o vencedor');
+        };
+        
+
+
+
+
+        //{
+        //    alert('Algum Jogador VENCEU!!!');
+        //} else {
+        //    alert('Célula já selecionada');
+        //}
+        console.log(matrizJogo);
     }
 </script>
 
